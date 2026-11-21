@@ -1,0 +1,243 @@
+/* ==========================================================================
+   main.css
+   Design tokens, base styles, layout and shared components.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. Design tokens (light theme by default)
+   -------------------------------------------------------------------------- */
+:root {
+    --bg: #f6f6f3;
+    --surface: #ffffff;
+    --text: #1a1a18;
+    --muted: #6b6b66;
+    --border: #e3e3dd;
+    --accent: #4f46e5;
+    --accent-text: #ffffff;
+    --danger: #e11d1d;
+
+    /* Platform brand colors */
+    --tiktok: #fe2c55;
+    --youtube: #e11d1d;
+    --x: #555555;
+    --instagram: #c13584;
+
+    color-scheme: light;
+}
+
+/* Dark theme: follows the user's OS setting */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #121211;
+        --surface: #1c1c1a;
+        --text: #f2f2ee;
+        --muted: #a0a09a;
+        --border: #2f2f2b;
+        --accent: #818cf8;
+        --accent-text: #111111;
+        --x: #bbbbbb;
+
+        color-scheme: dark;
+    }
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Base
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+h2 {
+    margin: 0 0 12px;
+    font-size: 16px;
+}
+
+.muted {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* --------------------------------------------------------------------------
+   3. Layout
+   -------------------------------------------------------------------------- */
+.app-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 20px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+}
+
+.app-title {
+    margin: 0;
+    font-size: 18px;
+}
+
+.app-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.app-main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.grid {
+    display: grid;
+    gap: 16px;
+}
+
+.grid--two {
+    grid-template-columns: 1fr 1fr;
+}
+
+/* Stack columns on small screens */
+@media (max-width: 720px) {
+    .grid--two {
+        grid-template-columns: 1fr;
+    }
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+
+/* --------------------------------------------------------------------------
+   4. Components
+   -------------------------------------------------------------------------- */
+
+/* Card */
+.card {
+    margin-bottom: 16px;
+    padding: 18px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+/* Buttons (.btn is the base, .chip and nav buttons share the same look) */
+.btn,
+.chip,
+.app-nav button {
+    padding: 7px 14px;
+    font: inherit;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn--primary {
+    font-weight: 600;
+    color: var(--accent-text);
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+/* Active state for tabs and toggle chips */
+.chip.is-active,
+.app-nav button.is-active {
+    color: var(--accent-text);
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+/* Form fields */
+textarea,
+input[type="datetime-local"] {
+    width: 100%;
+    padding: 10px;
+    font: inherit;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+/* Video upload area */
+.dropzone {
+    display: block;
+    padding: 22px;
+    text-align: center;
+    color: var(--muted);
+    border: 2px dashed var(--border);
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.dropzone:hover {
+    border-color: var(--accent);
+}
+
+.video-preview {
+    width: 100%;
+    max-height: 260px;
+    margin-top: 10px;
+    background: #000000;
+    border-radius: 10px;
+}
+
+/* Character counter */
+.counter {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.counter.is-over {
+    font-weight: 600;
+    color: var(--danger);
+}
+
+/* Colored dot used next to platform names */
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+/* Generic list row (queue and accounts) */
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.list-item:last-child {
+    border-bottom: 0;
+}

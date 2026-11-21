@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SocialHub – Manage all your accounts</title>
+
+    <!-- Stylesheets: base/layout first, then feature-specific styles -->
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="analytics.css">
+</head>
+<body>
+
+    <header class="app-header">
+        <h1 class="app-title">📱 SocialHub</h1>
+        <!-- Tab buttons are rendered by main.js -->
+        <nav id="nav" class="app-nav" aria-label="Main navigation"></nav>
+    </header>
+
+    <!-- The active view is rendered here by main.js -->
+    <main id="app" class="app-main"></main>
+
+    <!--
+        Script load order matters (plain scripts, no build step needed):
+        1. data.js      -> constants and sample data
+        2. utils.js     -> small helper functions
+        3. analytics.js -> analytics view
+        4. main.js      -> app state, other views, events (entry point)
+    -->
+    <script src="data.js"></script>
+    <script src="utils.js"></script>
+    <script src="analytics.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
